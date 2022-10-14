@@ -1,0 +1,19 @@
+// SETUP
+@import 'setup/typography';
+@import 'setup/variables';
+@import 'setup/mixins';
+@import 'setup/functions';
+
+// BASICS
+@import 'basics/helpers';
+@import 'basics/base';
+@import 'basics/layout';
+
+// COMPONENTS
+@import 'components/main-header';
+@import 'components/user-page';
+@import 'components/add';
+@import 'components/view-comments';
+@import 'components/side';
+@import 'components/story-app';
+//

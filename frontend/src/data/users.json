@@ -1,0 +1,92 @@
+[
+    {
+  "fullname": "Pablo Lasos","_id":"u106","imgUrl":"img/profile-6.jpg",
+  "following": [
+    {
+      "_id": "u101",
+      "fullname": "Dan Cash",
+      "imgUrl": "img/profile-1.jpg"
+    }
+  ],
+  "followers": [
+    {
+      "_id": "u102",
+      "fullname": "Shir Levi",
+      "imgUrl": "img/profile-2.png"
+    }
+  ],
+  "isFollowed":false
+  },
+  {
+    "fullname": "Pavel Nedvel","_id":"u107","imgUrl":"img/profile-7.jpg",
+    "following": [
+      {
+        "_id": "u101",
+        "fullname": "Dan Cash",
+        "imgUrl": "img/profile-1.jpg"
+      }
+    ],
+    "followers": [
+      {
+        "_id": "u102",
+        "fullname": "Shir Levi",
+        "imgUrl": "img/profile-2.png"
+      }
+    ],
+    "isFollowed":false
+    },
+    {
+      "fullname": "Loern Nadal","_id":"u108","imgUrl":"img/profile-8.jpg",
+      "following": [
+        {
+          "_id": "u101",
+          "fullname": "Dan Cash",
+          "imgUrl": "img/profile-1.jpg"
+        }
+      ],
+      "followers": [
+        {
+          "_id": "u102",
+          "fullname": "Shir Levi",
+          "imgUrl": "img/profile-2.png"
+        }
+      ],
+      "isFollowed":false
+      },
+      {
+        "fullname": "Nikol Vinsky","_id":"u109","imgUrl":"img/profile-9.jpg",
+        "following": [
+          {
+            "_id": "u101",
+            "fullname": "Dan Cash",
+            "imgUrl": "img/profile-1.jpg"
+          }
+        ],
+        "followers": [
+          {
+            "_id": "u102",
+            "fullname": "Shir Levi",
+            "imgUrl": "img/profile-2.png"
+          }
+        ],
+        "isFollowed":false
+        },
+        {
+          "fullname": "Leonrdo DeGuzman","_id":"u110","imgUrl":"img/profile-10.jpg",
+          "following": [
+            {
+              "_id": "u101",
+              "fullname": "Dan Cash",
+              "imgUrl": "img/profile-1.jpg"
+            }
+          ],
+          "followers": [
+            {
+              "_id": "u102",
+              "fullname": "Shir Levi",
+              "imgUrl": "img/profile-2.png"
+            }
+          ],
+          "isFollowed":false
+          }
+  ]

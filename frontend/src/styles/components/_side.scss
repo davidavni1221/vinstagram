@@ -1,0 +1,44 @@
+.side{
+    margin-top: 60px;
+    height: 880px;
+    width: 300px;
+    margin-left: 20px;
+}
+
+.unic-font{
+    margin-top: 5px;
+    color: rgb(150, 150, 150);
+}
+
+.unic-font span{
+    margin-left: 12px;
+}
+
+.side-name-pic{
+    img{
+        height: 57px;
+        width: 57px;
+    }
+    display: flex;
+    align-items:center ;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.suggestions-pic-name{
+    align-items: center;
+}
+
+.suggestions{
+    .follow-p{
+        color: #0095f6;
+    }
+align-items: center;
+justify-content: space-between;
+}
+
+@media (max-width:1500px){
+ .side{
+    display: none;
+ }   
+}

@@ -1,0 +1,154 @@
+.list{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.story-preview{
+    list-style-type: none;
+    margin-top: 18px;
+    border:1px solid rgb(212, 212, 212) ;
+    border-radius: 10px;
+    width: 470px;
+    background-color: rgb(255, 255, 255);
+}
+
+.top-info{
+    display: flex;
+    justify-content: space-between;
+    height: 58px;
+}
+
+.profile-pic{
+    height: 33px;
+    width: 33px;
+    margin:12px ;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.name-place{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-button{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    margin-right: 4px;
+    margin-top: 4px;
+    width: 30px;
+    border: none;
+.option{
+    display: flex;
+    align-items: center;
+ }
+}
+
+.story-img{
+    width: 100%;
+    height: auto;
+    max-height: 583px;
+}
+
+.story-app{
+    display: flex;
+    justify-content: center;
+}
+
+.icons{
+justify-content: space-between;
+height: 46px;
+align-items: center;
+}
+
+.icon{
+height: 24px;
+}
+
+.left-icons{
+width: 125px;
+display: flex;
+justify-content: space-around;
+}
+
+.red{
+    background-color: rgb(196, 23, 23);
+}
+
+.right-icon{
+    margin-right: 9px;
+}
+
+.likes{
+    margin: 2px;
+    margin-bottom: 8px;
+    margin-left: 9px;
+}
+
+.comments{
+    margin: 2px;
+    margin-left: 9px;
+}
+
+.story-discription{
+    margin-left: 9px;
+    margin-bottom:5px ;
+}
+.viwe-comments-to{
+    margin-left: 9px;
+    margin-top: 3px;
+}
+
+.date{
+    text-transform: Uppercase;
+    margin-left: 11px;
+    margin-top: 10px;
+    font-size:smaller;
+    color: rgb(166, 165, 165);
+    font-size: 10px;
+}
+
+.add-comment{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 49px;
+    margin-top: 9px;
+    justify-content: space-between;
+    border-top:1px solid rgb(212, 212, 212) ;
+    svg{
+        margin-left: 12px;
+        width: 30px;
+    }
+.input-comment{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-left:9px ;
+    height: 36px;
+    border: none;
+    border-radius: 9px;
+    outline: none;
+}
+.input-comment::placeholder{
+    color: #8f8f8f;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+.btn-post{
+    margin-right: 9px;
+    border: none;
+    background: rgb(255, 255, 255);
+    color: rgb(196, 219, 255);
+}
+.typing{
+    color: rgb(61, 149, 243);
+    font-weight: bold;
+}
+.typing:hover{
+    cursor: pointer;
+}
+}
