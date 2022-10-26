@@ -5,6 +5,7 @@ const { broadcast } = require('../../services/socket.service.js')
 async function getStorys(req, res) {
   try {
     const queryParams = req.query
+    console.log({queryParams});
     const storys = await storyService.query(queryParams)
     res.json(storys)
   } catch (err) {

@@ -4,9 +4,9 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy=null) {
   const criteria = _buildCriteria(filterBy)
+  console.log(criteria);
   const collection = await dbService.getCollection('story')
   var storys = await collection.find(criteria).toArray()
-  console.log(storys);
   return storys
 }
 

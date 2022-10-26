@@ -16,11 +16,12 @@ async function getCollection(collectionName) {
     const db = await connect()
     console.log('after conect 2');
     console.log({db});
-    const names=db.getCollectionNames()
-    console.log({names});
+    console.log('4444');
+    // const names=db.getCollectionNames()
+    // console.log({names});
 
     const collection = db.collection(collectionName)
-    // console.log('db',collection);
+    console.log({collection});
     
     return collection
   } catch (err) {

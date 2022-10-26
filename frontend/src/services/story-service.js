@@ -256,9 +256,9 @@ function query() {
 
 function getById(storyId) {
   // console.log(storyId);
-    return httpService.get(`story/${storyId}`)
+    // return httpService.get(`story/${storyId}`)
 
-  // return storageService.get(KEY, storyId)
+  return storageService.get(KEY, storyId)
 }
 
 function saveToUser(storyId){
