@@ -3,7 +3,8 @@ import { storyService } from '../../services/story-service'
 export default {
   state: {
     storys: null,
-    users: null
+    users: null,
+    user:null
   },
   getters: {
     storys(state) {
@@ -11,6 +12,9 @@ export default {
     },
     users(state){
       return state.users
+    },
+    user(state){
+      return state.user  
     }
   },
   mutations: {
@@ -27,9 +31,11 @@ export default {
       else state.storys.unshift(story)
     },
     setUsers(state, {users}){
-      console.log(users);
       state.users = users
-    }
+    },
+    setUser(state, {user}){
+      state.user = user
+    },
   },
   actions: {
     loadStorys({ commit }) {
@@ -42,25 +48,33 @@ export default {
         commit({ type: 'setUsers', users })
       })
     },
+    async loadUser({ commit }) {
+      storyService.getUser().then((user) => {
+        commit({ type: 'setUser', user })
+      })
+    },
     saveStory({ commit }, { story ,newComment=null}) {
      return storyService.save(story,newComment).then((story) => {
-        // console.log(story);
         commit({ type: 'saveStory', story })
         return story
         
       })
     },
 
-    saveToUserId( { commit }, {id} ){
-      console.log(id);
-      storyService.saveToUser(id)
+      async saveToUserId( { commit }, {id} ){
+      const user = storyService.saveToUser(id)
+      commit({type:'setUser', user})
+      const story=await storyService.changeSaved(id)
+      let storys =await storyService.query() 
+      let index= storys.findIndex( el => el._id === id )
+      storys.splice(index,1,story)
+      commit({type:'setStorys', storys})
 },
 
 async newFollowing( { commit }, userId ){
-  const users = await storyService.saveNewfollowing(userId._id)
-  console.log(users);
+  const [users,user] = await storyService.saveNewfollowing(userId._id)
   commit({type:'setUsers', users})
-  return users
+  commit({type:'setUser', user})
 },
 
     removeStory({ commit }, { id }) {

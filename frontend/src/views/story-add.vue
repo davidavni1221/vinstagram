@@ -1,5 +1,4 @@
 <template>
-
     <div v-if="storyToEdit" class="modal-mask flex">
       <div  @click="goBack" class="modal-close-button-container">
                 <div class="modal-close-btn">
@@ -15,13 +14,16 @@
         <div class="modal-wrapper">
             <div class="modal-container">
                  <div class="flex modal-header"><div class="white">ffddd</div>
-                <div>Create new post</div> <form @submit.prevent="submit"><div class="btn-save-container"><button v-if="imgUrl" class="btn-save bold" type="submit">Share</button></div></form>
+                <div>Create new post</div> <form @submit.prevent="submit">
+                  <div class="btn-save-container">
+                    <button v-if="imgUrl" class="btn-save bold" type="submit">Share</button></div></form>
                 </div>
                 <div class="modal-body">
                 <div v-if="imgUrl" class="modal-details-upload flex">
                 <div class="img-upload"><img class="img-for-upload" :src= this.imgUrl /></div>     
                   <div class="info-create-story">
-                    <div class="user-profile-pic-name flex"><img class="img-add" :src="user.imgUrl" > <div class="profile-name">{{user.fullname}}</div> </div>
+                    <div class="user-profile-pic-name flex">
+                      <img class="img-add" :src="user.imgUrl" > <div class="profile-name">{{user.fullname}}</div> </div>
                     <textarea class="textarea-input" v-model="storyToEdit.txt" 
                     placeholder="Write a caption..." ></textarea>
                     <div class="smile-upload"> 
@@ -29,24 +31,20 @@
                         </div>
                     <input class="input-add-loc" v-model="storyToEdit.loc.name" type="text" placeholder="add location">
                  </div>
-                   
-
-                    
                     </div>
                  <div v-else class="modal-details">
                         <add-image-icon></add-image-icon>
-                        
                         <p class="modal-description">Drag photos and videos here</p>
-                       <label><p class="modal-select-button button">Select from computer </p><input type="file" @change="saveImg" hidden></label>
+                       <label><p class="modal-select-button button">Select from computer </p>
+                       <input type="file" @change="saveImg" hidden></label>
                     </div>
                  </div>
-
              </div>
             </div>
-            
      </div>
 </template>
 <script>
+import { uploadImg } from '../services/img-upload.service'
 import { storyService } from '../services/story-service'
 import addImageIcon from "../assets/icons/add-image-icon.cmp.vue"
 import emojisPicker from '../components/emojis-picker.vue'
@@ -64,29 +62,36 @@ export default {
   },
     components: {
         addImageIcon,
-        emojisPicker
+        emojisPicker,
+        uploadImg
     },
     methods: {
          saveImg(ev) {
-           console.log(ev);
-          var file
-        file = ev.target.files[0].name
-        console.log(file);
-      this.imgUrl='img/'+file
+      //     var file
+      //     console.log(ev);
+      //   file = ev.target.files[0].name
+      // this.imgUrl='img/'+file
+      // this.storyToEdit.imgUrl=this.imgUrl
+            console.log(ev);
+            var file
+             file = ev.target.files[0]
+            this.onUploadFile(file)
+        },
+        async onUploadFile(file) {
+            const res = await uploadImg(file)
+                this.imgUrl=res.url
       this.storyToEdit.imgUrl=this.imgUrl
-      console.log('thiscomponent',this.imgUrl);
+        
     },
 goBack(){
-this.$router.push('/story')}
-,
+this.$router.push('/story')
+},
 submit() {
-      
       this.$store.dispatch({ type: 'saveStory', story: this.storyToEdit }).then(() => {
         this.$router.push('/story')
       })
     },
     },
-   
 }
 </script>
 <style>

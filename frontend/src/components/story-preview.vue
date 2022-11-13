@@ -24,11 +24,16 @@
 <svg @click.native="toComments(story._id)" aria-label="Comment" class="_ab6- hover" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M20.656 17.008a9.993 9.993 0 10-3.59 3.615L22 22z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
 <svg aria-label="Share Post" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
 </div>
-<div v-if="!isBlack" @click="savePost(story._id)" class="right-icon hover"><svg aria-label="Save" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon></svg>  </div>
-<div v-else @click="savePost(story._id)" class="right-icon hover"><svg aria-label="Remove" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M20 22a.999.999 0 01-.687-.273L12 14.815l-7.313 6.912A1 1 0 013 21V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1z"></path></svg>  </div>
 
+<div v-if="!story.saved" @click="savePost(story._id)" class="right-icon hover">
+  <svg aria-label="Save" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><polygon fill="none" points="20 21 12 13.44 4 21 4 3 20 3 20 21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+  </svg>  
+</div>
+<div v-else @click="savePost(story._id)" class="right-icon hover">
+  <svg aria-label="Remove" class="_ab6-" color="	#000000" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M20 22a.999.999 0 01-.687-.273L12 14.815l-7.313 6.912A1 1 0 013 21V3a1 1 0 011-1h16a1 1 0 011 1v18a1 1 0 01-1 1z"></path>
+  </svg> 
+   </div>
           </div>
-
           <div class="likes bold" v-if="story.likedBy" ><span>{{story.likedBy.length}}</span>&nbsp;likes</div>
           <div class="story-discription flex" v-if="story.txt"> <p class="bold">{{story.by.fullname}}</p><p class="regular">&nbsp;{{story.txt}}</p></div>
           <div v-if="story.comments" class="viwe-comments-conteiner">
@@ -39,7 +44,8 @@
           <div class="add-comment">
             <svg aria-label="Emoji" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg>
             <input class="input-comment" v-if="txtInInput" v-model="newComment.txt" type="text" placeholder="Add a comment...">
-            <button @click="postComment(story)" class="btn-post bold" :class="{ typing: isActive }">Post</button></div>
+            <button @click="postComment(story)" class="btn-post bold" :class="{ typing: isActive }">Post</button>
+            </div>
         
         </div>
       
@@ -66,7 +72,8 @@ export default {
         _id: "u100",
       fullname: "Johnny Deph",
       imgUrl: "img/profile-user.jpg",
-      remove:null},
+      remove:null
+    },
 
       newComment:
       {
@@ -101,8 +108,6 @@ export default {
   },
   methods: {
     toComments(storyId){
-
-      // console.log(this.story._id);
        this.$router.push(`/story/comments/`+storyId)
     },
     postComment(story){
@@ -121,8 +126,11 @@ export default {
     },
 
     savePost(storyId){
-      this.isBlack=true
-this.$emit('saveToUserId', storyId)
+      if(this.isBlack === true){
+        this.isBlack = false
+      }
+      else { this.isBlack = true }
+      this.$emit('saveToUserId', storyId)
     },
     
     removeStory(storyId){

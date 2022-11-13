@@ -14,19 +14,21 @@ function query(entityType) {
 }
 
 //get an item by id
-function get(entityType, entityId) {
+async function get(entityType, entityId, user = null) {
+    if (user) {
+        const x = await query(entityType)
+        return x.storys.find(entity => entity._id === entityId)
+    }
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 
 //create new item
 function post(entityType, newEntity) {
-    console.log('ian here');
     newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
             entities.unshift(newEntity);
-            console.log(entities);
             _save(entityType, entities)
             return newEntity;
         })
@@ -46,7 +48,7 @@ function postMany(entityType, newEntities) {
 function put(entityType, updatedEntity) {
     return query(entityType)
         .then(entities => {
-            const idx = entities.findIndex(entity => entity.id === updatedEntity.id);
+            const idx = entities.findIndex(entity => entity._id === updatedEntity._id);
             entities.splice(idx, 1, updatedEntity)
             _save(entityType, entities)
             return updatedEntity;

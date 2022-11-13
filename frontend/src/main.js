@@ -18,13 +18,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(far);
 import ElementPlus from 'element-plus';
 import { EmojiPickerPlugin } from 'vue-emoji-picker'
-
-
-
-
-
-
-// import './assets/main.css'
 import "./styles/styles.scss";
 
 const app = createApp(App)

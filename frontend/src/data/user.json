@@ -1,0 +1,401 @@
+
+    {
+        "_id": "u100",
+        "username": "johnny_deph",
+        "password": "123",
+        "fullname": "Johnny Deph",
+        "imgUrl": "img/profile-user.jpg",
+        "createdAt": "2022-01-28",
+        "following": [
+          {
+            "_id": "u101",
+            "fullname": "Dan Cash",
+            "imgUrl": "img/profile-1.jpg"
+          }
+        ],
+        "followers": [
+          {
+            "_id": "u102",
+            "fullname": "Shir Levi",
+            "imgUrl": "img/profile-2.png"
+          }
+        ],
+      
+        "savedStoryIds": [
+          { "_id": "2" }, { "_id": "3" }, { "_id": "4" }
+      
+      
+        ],
+        "storys": [
+          {
+            "imgUrl": "img/user-photo-1.jpg",
+            "_id": "5"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+      
+          },
+          {
+            "imgUrl": "img/user-photo-2.jpg",
+            "_id": "111"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-3.jpg",
+            "_id": "222"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-4.jpg",
+            "_id": "333"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-5.jpg",
+            "_id": "444"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-6.jpg",
+            "_id": "555"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-7.jpg",
+            "_id": "666"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          },
+          {
+            "imgUrl": "img/user-photo-8.jpg",
+            "_id": "777"
+            , "txt": "haloo!",
+            "by": {
+              "fullname": "Johnny Deph",
+              "_id": "u100", "imgUrl": "img/profile-user.jpg"
+            }, "loc": {
+              "lat": "11.11", "lng": "22.22", "name": "Holewood"
+            },
+            "createdAt": "2020-01-28",
+            "comments": [
+              {
+                "id": "c1003",
+                "by": {
+                  "_id": "u103",
+                  "fullname": "Jen Lopez",
+                  "imgUrl": "img/profile-3.jpg"
+                },
+                "txt": "godd!!!",
+                "createdAt": "2022-01-28"
+              },
+              {
+                "id": "c1004",
+                "by": {
+                  "_id": "u102",
+                  "fullname": "Shir Levi",
+                  "imgUrl": "img/profile-2.png"
+                },
+                "txt": "halo",
+                "createdAt": "2022-01-28"
+              }
+            ],
+            "likedBy": [
+              {
+                "_id": "u103",
+                "fullname": "Jen Lopez",
+                "imgUrl": "img/profile-3.jpg"
+              },
+              {
+                "_id": "u102",
+                "fullname": "Shir Levi",
+                "imgUrl": "img/profile-2.png"
+              }
+            ]
+          }
+        ]
+      }
+    

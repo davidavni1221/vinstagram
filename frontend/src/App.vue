@@ -1,20 +1,22 @@
 <template>
   <section class="app-container container">
-    <app-header />
-
+    <app-header :user="user"/>
     <router-view />
   </section>
 </template>
-
 <script>
 import appHeader from './components/app-header.vue'
-// import { RouterLink, RouterView } from "vue-router";
-
 export default {
   name: 'app',
   created() {
     this.$store.dispatch({ type: 'loadStorys' })
     this.$store.dispatch({ type: 'loadUsers' })
+    this.$store.dispatch({ type: 'loadUser' })
+  },
+  computed: {
+    user(){
+      return this.$store.getters.user
+    },
   },
   methods: {
   },
@@ -29,8 +31,6 @@ export default {
     font-family: "Billabong";
     src: local("Billabong"),
     url("./assets/fonts/Billabong/FontsFree-Net-Billabong.ttf") format("truetype");
-    
-     
     }@font-face {
     font-family: "Segoe UI";
     src: local("Segoe UI"),
