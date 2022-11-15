@@ -28,6 +28,8 @@ async function remove(storyId) {
 async function add(story) {
   const collection = await dbService.getCollection('story')
   const { ops } = await collection.insertOne(story)
+  console.log(ops[0]);
+  console.log("okjhhhh");
   return ops[0]
 }
 async function update(story) {

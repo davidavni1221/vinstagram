@@ -71,6 +71,7 @@ toStory(){
   computed:{
     user(){
        var user =this.$store.getters.user
+       console.log(user);
        for (var i = 0; i < user.savedStoryIds.length; i++) {
        var id=user.savedStoryIds[i]._id
        storyService.getById(id).then((value)=>this.saved.push(value)) 

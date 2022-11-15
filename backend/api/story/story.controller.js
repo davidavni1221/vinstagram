@@ -26,10 +26,11 @@ async function getStoryById(req, res) {
 
 async function addStory(req, res) {
   const story = req.body
+  console.log('wwwwwwmmmmmm');
   console.log(story);
   try {
     const addedStory = await storyService.add(story)
-    broadcast({ type: 'something-changed', userId: req.session?.user._id })
+    // broadcast({ type: 'something-changed', userId: req.session?.user._id })
     res.json(addedStory)
   } catch (err) {
     res.status(500).send(err)

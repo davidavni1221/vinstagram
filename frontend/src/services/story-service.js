@@ -1,9 +1,9 @@
 import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service'
 import { utilService } from './util-service.js'
-import storys from '../data/storys.json' assert { type: 'json'}
-import users from '../data/users.json' assert { type: 'json'}
-import user from '../data/user.json' assert { type: 'json'}
+// import storys from '../data/storys.json' assert { type: 'json'}
+// import users from '../data/users.json' assert { type: 'json'}
+// import user from '../data/user.json' assert { type: 'json'}
 // const story = [{
 //   "_id": "s101",
 //   "txt": "Best trip ever",
@@ -170,7 +170,7 @@ import user from '../data/user.json' assert { type: 'json'}
 // }
 
 const emptyStory = {
-  _id: null,
+  // _id: null,
   txt: '',
   imgUrl: '', //Can be an array if decide to support multiple imgs
   createdAt: new Date().toDateString(),
@@ -185,54 +185,55 @@ const emptyStory = {
     name: ""
   },
   comments: [
-    {
-      id: "c1001",
-      by: {
-        _id: "u104",
-        fullname: "eli cohen",
-        imgUrl: "img/profile-4.jpg"
-      },
-      txt: "Good one!",
-      // likedBy: [ // Optional
-      // {
-      //   _id: "u105",
-      //   fullname: "Bob",
-      //   imgUrl: "http://some-img"
-      // }
-      // ]
-    },
-    {
-      id: "c1002",
-      by: {
-        _id: "u102",
-        fullname: "shir levi",
-        imgUrl: "img/profile-2.png"
-      },
-      txt: "Wow enjoy!",
-    }
+    // {
+    //   id: "c1001",
+    //   by: {
+    //     _id: "u104",
+    //     fullname: "eli cohen",
+    //     imgUrl: "img/profile-4.jpg"
+    //   },
+    //   txt: "Good one!",
+    //   likedBy: [ // Optional
+    //   {
+    //     _id: "u105",
+    //     fullname: "Bob",
+    //     imgUrl: "http://some-img"
+    //   }
+    //   ]
+    // },
+    // {
+    //   id: "c1002",
+    //   by: {
+    //     _id: "u102",
+    //     fullname: "shir levi",
+    //     imgUrl: "img/profile-2.png"
+    //   },
+    //   txt: "Wow enjoy!",
+    // }
   ],
   likedBy: [
-    {
-      _id: "u101",
-      fullname: "Dan Cash",
-      imgUrl: "img/profile-1.jpg"
-    },
-    {
-      _id: "u102",
-      fullname: "shir levy",
-      imgUrl: "img/profile-2.png"
-    }
+    // {
+    //   _id: "u101",
+    //   fullname: "Dan Cash",
+    //   imgUrl: "img/profile-1.jpg"
+    // },
+    // {
+    //   _id: "u102",
+    //   fullname: "shir levy",
+    //   imgUrl: "img/profile-2.png"
+    // }
   ],
-  tags: ["fun", "kids"]
+  tags: ["fun", "kids"],
+  liked:false
 }
 
 const KEY = 'story_db'
 const USERS_KEY = 'users_db'
 const USER_KEY = 'user_db'
 
-_createUser()
-_createUsers()
-_createStorys()
+// _createUser()
+// _createUsers()
+// _createStorys()
 
 export const storyService = {
   query,
@@ -248,32 +249,40 @@ export const storyService = {
 }
 
 function query() {
-  // return httpService.get('story')
-  return storageService.query(KEY)
+  return httpService.get('story')
+  // return storageService.query(KEY)
 }
 
 async function getById(storyId, user = null) {
   if (user) {
-    return storageService.get(USER_KEY, storyId, user)
+    // return storageService.get(USER_KEY, storyId, user)
     // return httpService.get(`user/${storyId}`)
+//     const userStory= httpService.get(`admin/${storyId}`)
+//     console.log(userStory);
+// return userStory
 
+const user= await httpService.get('admin')
+   console.log(user[0]);
+   return user[0].storys.find(story=>story._id===storyId)
   }
 
-  // const story = await httpService.get(`story/${storyId}`)
-  // return story
-  return storageService.get(KEY, storyId)
+  const story = await httpService.get(`story/${storyId}`)
+  return story
+  // return storageService.get(KEY, storyId)
 }
 
 async function changeSaved(storyId) {
-  const story = await getById(storyId)
-  if (story.saved) { story.saved = false } else { story.saved = true }
-  const Nstory = await storageService.put(KEY, story)
-      // const Nstory = await httpService.put(`story`, story)
-
-  return Nstory
+  var story = await getById(storyId)
+  console.log(story);
+  if (story.saved) { story.saved = false } 
+  else { story.saved = true }
+  // const Nstory = await storageService.put(KEY, story)
+      const nStory = await httpService.put(`story`, story)
+  return nStory
 }
 
-function saveToUser(storyId) {
+async function saveToUser(storyId) {
+  var user= await getUser()
   const id = user.savedStoryIds.find(({ _id }) => _id === storyId);
   if (id) {
     const newArr = user.savedStoryIds.filter(({ _id }) => _id !== storyId)
@@ -282,51 +291,69 @@ function saveToUser(storyId) {
   else {
     user.savedStoryIds.push({ _id: storyId })
   }
-  return user
+  const nUser = await httpService.put(`admin`, user)
+  return nUser
 }
 
 async function saveNewfollowing(userId) {
-  const allUSers = await getUsers()
-  user.following.push({ _id: userId })
+  var allUSers = await getUsers()
+  var user= await getUser()
+
+  // user.following.push({ _id: userId })
   const idx = allUSers.findIndex((user) =>
     user._id === userId
   )
-  allUSers[idx].isFollowed = true
-  const i = await storageService.put(USERS_KEY, allUSers[idx])
-  return [allUSers, user]
+  if (allUSers[idx].isFollowed) {
+    allUSers[idx].isFollowed=false
+    user.following.splice(idx,1)
+  } else {
+    allUSers[idx].isFollowed = true
+    user.following.push({ _id: userId })}
+  // const i = await storageService.put(USERS_KEY, allUSers[idx])
+  await httpService.put('user', allUSers[idx])
+  const nUser = await httpService.put('admin', user)
+
+  return [allUSers, nUser]
 }
 
 function remove(storyId) {
-  return storageService.remove(KEY, storyId)
-  // return httpService.delete(`story/${storyId}`)
+  // return storageService.remove(KEY, storyId)
+  return httpService.delete(`story/${storyId}`)
 
 }
 
 async function save(story, newComment) {
   var currStory = JSON.parse(JSON.stringify(story))
+  console.log(currStory.liked);
+  if(currStory.liked)currStory.liked=false
+  else currStory.liked=true
+  console.log(currStory.liked);
   if (currStory._id) {
     if (newComment._id && newComment.remove === null) currStory.likedBy.push(newComment)
     else if (newComment.remove === true) currStory.likedBy.splice(currStory.likedBy.length - 1, 1)
     else currStory.comments.push(newComment)
-    return storageService.put(KEY, currStory)
-    // return httpService.put(`story`, currStory)
+    // return storageService.put(KEY, currStory)
+    return httpService.put(`story`, currStory)
 
   }
-  return storageService.post(KEY, currStory)
-  // const user = await httpService.post('story', currStory)
-  // return user
+  // return storageService.post(KEY, currStory)
+  const Nstory = await httpService.post('story', currStory)
+  return Nstory
 
 }
 
 function getUsers() {
+  // return httpService.get('users')
+  return httpService.get('user')
 
-  return storageService.query(USERS_KEY)
+  // return storageService.query(USERS_KEY)
 }
 
-function getUser() {
+async function getUser() {
   // return httpService.get('user')
-
-  return storageService.query(USER_KEY)
+   const user= await httpService.get('admin')
+return user[0]
+  // return storageService.query(USER_KEY)
 }
 
 function getEmptyStory() {
@@ -593,3 +620,33 @@ function _createStorys() {
   return storysDB
 }
 
+function timeSince(date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " years";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " months";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " days";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " hours";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
+}
+var aDay = 24*60*60*1000;
+console.log(timeSince(new Date(Date.now()-aDay)));
+console.log(timeSince(new Date(Date.now()-aDay*2)));

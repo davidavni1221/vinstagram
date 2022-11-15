@@ -1,5 +1,5 @@
 <template>
-<section class="side flex-column ">
+<section v-if="user" class="side flex-column ">
    <div @click="toUserPage" class="flex side-name-pic">
     <img class="profile-pic hover" :src="user.imgUrl"> 
     <div class="flex-column hover"><p class="bold">{{user.username}}</p>
@@ -11,7 +11,7 @@
         <p class="bold">{{user.fullname}}</p>
       </div>
       <p v-if="!user.isFollowed" @click="following(user._id)" class="follow-p bold-12 hover">Follow</p>
-      <p v-else class="follow-q bold-12">Following</p>
+      <p v-else @click="following(user._id)" class="follow-q bold-12 hover">Following</p>
     </div>
   </section>
 </template>
@@ -38,6 +38,7 @@ props:{
   methods: {
 
    following(userId){
+    console.log(userId);
     this.$emit('following', userId)
   },
     toUserPage(){

@@ -31,6 +31,7 @@ const storyRoutes = require('./api/story/story.routes')
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
+const adminRoutes = require('./api/admin/admin.routes')
 const { connectSockets } = require('./services/socket.service')
 
 // routes
@@ -41,6 +42,7 @@ app.use('/api/story', storyRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
+app.use('/api/admin', adminRoutes)
 
 connectSockets(http, session)
 

@@ -38,10 +38,10 @@ export default {
     },
   },
   actions: {
-    loadStorys({ commit }) {
-      storyService.query().then((storys) => {
-        commit({ type: 'setStorys', storys })
-      })
+    async loadStorys({ commit }) {
+      const storys= await storyService.query()
+        commit({ type: 'setStorys', storys 
+    })
     },
     async loadUsers({ commit }) {
       storyService.getUsers().then((users) => {
@@ -62,17 +62,17 @@ export default {
     },
 
       async saveToUserId( { commit }, {id} ){
-      const user = storyService.saveToUser(id)
+      const user = await storyService.saveToUser(id)
       commit({type:'setUser', user})
       const story=await storyService.changeSaved(id)
       let storys =await storyService.query() 
-      let index= storys.findIndex( el => el._id === id )
-      storys.splice(index,1,story)
+      // let index= storys.findIndex( el => el._id === id )
+      // storys.splice(index,1,story)
       commit({type:'setStorys', storys})
 },
 
-async newFollowing( { commit }, userId ){
-  const [users,user] = await storyService.saveNewfollowing(userId._id)
+async newFollowing( { commit }, {_id} ){
+  const [users,user] = await storyService.saveNewfollowing(_id)
   commit({type:'setUsers', users})
   commit({type:'setUser', user})
 },

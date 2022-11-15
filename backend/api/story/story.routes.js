@@ -8,12 +8,13 @@ const router = express.Router()
 
 router.get('/', getStorys)
 router.get('/:id', getStoryById)
-// router.post('/', addStory)
+router.post('/', addStory)
+router.put('/', updateStory)
 // router.put('/:id', updateStory)
 // router.delete('/:id', removeStory)
-router.post('/', requireAuth, requireAdmin, addStory)//,
+// router.post('/', requireAuth, requireAdmin, addStory)//,
 // router.put('/:id', requireAuth, requireAdmin, updateStory)
-router.put('/:id', requireAuth, updateStory)
+// router.put('/:id', requireAuth, updateStory)
 router.delete('/:id', removeStory)//requireAuth, requireAdmin,
 router.post('/:id/review', addReview)
 

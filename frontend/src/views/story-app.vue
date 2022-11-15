@@ -1,5 +1,5 @@
 <template>
-  <section class="story-app">
+  <section v-if="storysToShow" class="story-app">
     <story-list @saveToUserId="saveToUserId" @removeStory="removeStory" @saveStory="saveStory" :storys="storysToShow"  />
     <side  :user="user" :users="users" @following="following"/>
   <router-view></router-view>
@@ -13,7 +13,7 @@ export default {
   name: 'story-app',
   data() {
     return {
-      storys:null
+      // storys:null
     }
   },
   computed: {
@@ -25,6 +25,7 @@ export default {
     },
     storysToShow() {
       return this.$store.getters.storys
+      
     },
   },
   created() {},

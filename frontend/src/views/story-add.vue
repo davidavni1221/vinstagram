@@ -67,11 +67,6 @@ export default {
     },
     methods: {
          saveImg(ev) {
-      //     var file
-      //     console.log(ev);
-      //   file = ev.target.files[0].name
-      // this.imgUrl='img/'+file
-      // this.storyToEdit.imgUrl=this.imgUrl
             console.log(ev);
             var file
              file = ev.target.files[0]
@@ -79,8 +74,8 @@ export default {
         },
         async onUploadFile(file) {
             const res = await uploadImg(file)
-                this.imgUrl=res.url
-      this.storyToEdit.imgUrl=this.imgUrl
+            this.imgUrl=res.url
+            this.storyToEdit.imgUrl=this.imgUrl
         
     },
 goBack(){
