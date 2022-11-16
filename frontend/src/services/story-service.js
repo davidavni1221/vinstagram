@@ -177,7 +177,7 @@ const emptyStory = {
   by: {
     _id: "u100",
     fullname: "johnny deph",
-    imgUrl: "img/profile-user.jpg"
+    imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg"
   },
   loc: {
     lat: 11.11,
@@ -620,33 +620,33 @@ function _createStorys() {
   return storysDB
 }
 
-function timeSince(date) {
+// function timeSince(date) {
 
-  var seconds = Math.floor((new Date() - date) / 1000);
+//   var seconds = Math.floor((new Date() - date) / 1000);
 
-  var interval = seconds / 31536000;
+//   var interval = seconds / 31536000;
 
-  if (interval > 1) {
-    return Math.floor(interval) + " years";
-  }
-  interval = seconds / 2592000;
-  if (interval > 1) {
-    return Math.floor(interval) + " months";
-  }
-  interval = seconds / 86400;
-  if (interval > 1) {
-    return Math.floor(interval) + " days";
-  }
-  interval = seconds / 3600;
-  if (interval > 1) {
-    return Math.floor(interval) + " hours";
-  }
-  interval = seconds / 60;
-  if (interval > 1) {
-    return Math.floor(interval) + " minutes";
-  }
-  return Math.floor(seconds) + " seconds";
-}
-var aDay = 24*60*60*1000;
-console.log(timeSince(new Date(Date.now()-aDay)));
-console.log(timeSince(new Date(Date.now()-aDay*2)));
+//   if (interval > 1) {
+//     return Math.floor(interval) + " years";
+//   }
+//   interval = seconds / 2592000;
+//   if (interval > 1) {
+//     return Math.floor(interval) + " months";
+//   }
+//   interval = seconds / 86400;
+//   if (interval > 1) {
+//     return Math.floor(interval) + " days";
+//   }
+//   interval = seconds / 3600;
+//   if (interval > 1) {
+//     return Math.floor(interval) + " hours";
+//   }
+//   interval = seconds / 60;
+//   if (interval > 1) {
+//     return Math.floor(interval) + " minutes";
+//   }
+//   return Math.floor(seconds) + " seconds";
+// }
+// var aDay = 24*60*60*1000;
+// console.log(timeSince(new Date(Date.now()-aDay)));
+// console.log(timeSince(new Date(Date.now()-aDay*2)));

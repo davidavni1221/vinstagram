@@ -74,6 +74,9 @@ export default {
         },
         async onUploadFile(file) {
             const res = await uploadImg(file)
+            console.log(res);
+            console.log(res.url);
+
             this.imgUrl=res.url
             this.storyToEdit.imgUrl=this.imgUrl
         

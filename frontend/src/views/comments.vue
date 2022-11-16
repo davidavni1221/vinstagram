@@ -84,7 +84,7 @@ export default {
       {
         _id: "u100",
       fullname: "Johnny Deph",
-      imgUrl: "img/profile-user.jpg",
+      imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg",
       remove:null},
 
       newComment:{
@@ -92,7 +92,7 @@ export default {
         by: {
           _id: "u100",
           fullname: "Johnny Deph",
-          imgUrl: "img/profile-user.jpg"
+          imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg"
         },
         txt: "",
         createdAt: new Date().toDateString(),
@@ -100,7 +100,7 @@ export default {
           {
             _id: "u102",
             fullname: "Shir Levi",
-            imgUrl: "img/profile-2.jpg"
+            imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620016/profile-2_tjreoc.png"
           }
         ]}
     }

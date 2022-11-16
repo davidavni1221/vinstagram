@@ -11,7 +11,7 @@
         <p class="bold-12-regular"> {{ story.loc.name }}</p>
         <!-- <p><span>place:</span> {{ story.loc.lng }}</p> -->
         </div></div>
-        <button @click="removeStory(story._id)" class="info-button"><svg aria-label="More options" class="_ab6- option" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></button>
+        <div class="tooltip"><button @click="removeStory(story._id)" class="info-button"><svg aria-label="More options" class="_ab6- option hover" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg></button><span class="tooltiptext">Delete?</span></div>
         </div>
         <img class="story-img" :src="story.imgUrl">
 
@@ -23,7 +23,7 @@
   <svg v-else @click.native="makeLike(story)" aria-label="Unlike" class="_ab6- hover" color="#ed4956" fill="#ed4956" height="24" role="img" viewBox="0 0 48 48" width="24"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
 <!-- <svg v-else @click.native="makeLike(story)" class="hover" color="#ed4956" fill="#ed4956" height="24" role="img" viewBox="0 0 48 48" width="24"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg> -->
 <svg @click.native="toComments(story._id)" aria-label="Comment" class="_ab6- hover" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M20.656 17.008a9.993 9.993 0 10-3.59 3.615L22 22z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
-<svg aria-label="Share Post" class="_ab6- hover-in-progress" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+<div class="tooltip"><svg aria-label="Share Post" class="_ab6- hover-in-progress" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg> <span class="tooltiptext">Share in progress</span></div>
 </div>
 
 <div v-if="!story.saved" @click="savePost(story._id)" class="right-icon hover">
@@ -43,7 +43,7 @@
           <p class="date regular">{{ story.createdAt }}</p>
           
           <div class="add-comment">
-            <svg aria-label="Emoji" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg>
+            <div class="tooltip"><svg aria-label="Emoji" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M15.83 10.997a1.167 1.167 0 101.167 1.167 1.167 1.167 0 00-1.167-1.167zm-6.5 1.167a1.167 1.167 0 10-1.166 1.167 1.167 1.167 0 001.166-1.167zm5.163 3.24a3.406 3.406 0 01-4.982.007 1 1 0 10-1.557 1.256 5.397 5.397 0 008.09 0 1 1 0 00-1.55-1.263zM12 .503a11.5 11.5 0 1011.5 11.5A11.513 11.513 0 0012 .503zm0 21a9.5 9.5 0 119.5-9.5 9.51 9.51 0 01-9.5 9.5z"></path></svg><span class="tooltiptext">Emoji in progress</span></div>
             <input class="input-comment" v-if="txtInInput" v-model="newComment.txt" type="text" placeholder="Add a comment...">
             <button @click="postComment(story)" class="btn-post bold" :class="{ typing: isActive }">Post</button>
             </div>
@@ -66,13 +66,13 @@ export default {
     
     return{
       isActive: false,
-      isRed:true,
+      // isRed:true,
       isBlack:false,
       newLike:
       {
         _id: "u100",
       fullname: "Johnny Deph",
-      imgUrl: "img/profile-user.jpg",
+      imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg",
       remove:null
     },
 
@@ -82,7 +82,7 @@ export default {
         by: {
           _id: "u100",
           fullname: "Johnny Deph",
-          imgUrl: "img/profile-user.jpg"
+          imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg"
         },
         txt: "",
         createdAt: new Date().toDateString(),
@@ -90,7 +90,7 @@ export default {
           {
             _id: "u102",
             fullname: "Shir Levi",
-            imgUrl: "img/profile-2.png"
+            imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620016/profile-2_tjreoc.png"
           }
         ]}
     }
