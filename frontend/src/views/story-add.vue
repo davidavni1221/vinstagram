@@ -56,8 +56,9 @@ export default {
       imgUrl: null ,
     }
   },
-     created() {
+    created() {
     this.storyToEdit = storyService.getEmptyStory()
+    console.log(this.storyToEdit);
     this.user = storyService.getUser()
   },
     components: {
@@ -85,6 +86,7 @@ goBack(){
 this.$router.push('/story')
 },
 submit() {
+ console.log(this.storyToEdit); 
       this.$store.dispatch({ type: 'saveStory', story: this.storyToEdit }).then(() => {
         this.$router.push('/story')
       })

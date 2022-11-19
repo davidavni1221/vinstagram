@@ -322,19 +322,19 @@ function remove(storyId) {
 
 }
 
+
 async function save(story, newComment) {
   var currStory = JSON.parse(JSON.stringify(story))
-  console.log(currStory.liked);
-  if(currStory.liked)currStory.liked=false
-  else currStory.liked=true
-  console.log(currStory.liked);
   if (currStory._id) {
-    if (newComment._id && newComment.remove === null) currStory.likedBy.push(newComment)
-    else if (newComment.remove === true) currStory.likedBy.splice(currStory.likedBy.length - 1, 1)
-    else currStory.comments.push(newComment)
+    if (newComment._id && newComment.like &&!currStory.liked) {
+      currStory.liked=true
+       currStory.likedBy.push(newComment)}
+    else if (newComment.like) {
+      currStory.liked=false
+       currStory.likedBy.splice(currStory.likedBy.length - 1, 1)}
+    else {currStory.comments.push(newComment)}
     // return storageService.put(KEY, currStory)
     return httpService.put(`story`, currStory)
-
   }
   // return storageService.post(KEY, currStory)
   const Nstory = await httpService.post('story', currStory)

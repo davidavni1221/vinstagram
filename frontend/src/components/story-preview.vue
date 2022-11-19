@@ -68,12 +68,13 @@ export default {
       isActive: false,
       // isRed:true,
       isBlack:false,
+
       newLike:
       {
         _id: "u100",
       fullname: "Johnny Deph",
       imgUrl: "https://res.cloudinary.com/davidmay22/image/upload/v1668620012/profile-user_bclqfd.jpg",
-      remove:null
+      like:true
     },
 
       newComment:
@@ -94,6 +95,10 @@ export default {
           }
         ]}
     }
+
+  },
+
+  created(){
   },
   components: {
   },
@@ -117,13 +122,13 @@ export default {
     },
 
     makeLike(story){
-      if(story.liked===false){
+      if(!story.liked){
       this.$emit('saveStory', story,JSON.parse(JSON.stringify(this.newLike)) )
-      this.newLike.remove=true}
+    }
 
       else {
       this.$emit('saveStory', story,JSON.parse(JSON.stringify(this.newLike)) )
-      this.newLike.remove=null}
+    }
     },
 
     savePost(storyId){
