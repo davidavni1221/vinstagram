@@ -152,3 +152,17 @@ justify-content: space-around;
     cursor: pointer;
 }
 }
+
+
+@media (max-width:530px){
+    section{
+       width: fit-content;
+    }   
+    .header-conteiner{
+        max-width: 500px;
+justify-content: space-between;    }
+   .header{
+    margin-left:1em ;
+    width: 100%;
+   }
+   }
