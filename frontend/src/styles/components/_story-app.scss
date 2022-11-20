@@ -154,13 +154,16 @@ justify-content: space-around;
 }
 
 
-@media (max-width:530px){
-    section{
-       width: fit-content;
+@media (max-width:530px) {
+    html{
+        position: fixed;
+    }
+    .story-preview{
+        width: 100%;
     }   
     .header-conteiner{
-        max-width: 500px;
-justify-content: space-between;    }
+justify-content: space-between;   
+ }
    .header{
     margin-left:1em ;
     width: 100%;
