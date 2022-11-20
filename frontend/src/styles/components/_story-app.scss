@@ -154,9 +154,37 @@ justify-content: space-around;
 }
 
 
-@media (max-width:530px) {
-    html{
-        position: fixed;
+@media only screen 
+and (max-device-width: 530px)
+ { 
+    body{
+        // position: fixed;
+    //     min-height: 100%;
+    //     overflow-y:scroll;
+    overflow-x:hidden;
+    }
+    .story-preview{
+        width: 100%;
+    }   
+    .header-conteiner{
+justify-content: space-between;   
+ }
+   .header{
+    margin-left:1em ;
+    width: 100%;
+   }
+  }
+
+
+@media screen 
+and(max-width:530px)
+// and (device-width:530px)
+ {
+   body{
+        // position: fixed;
+    //     min-height: 100%;
+    //     overflow-y:scroll;
+    overflow-x:hidden;
     }
     .story-preview{
         width: 100%;
