@@ -140,7 +140,7 @@ export default {
     },
     
     removeStory(storyId){
-    this.$emit('removeStory', storyId)
+    // this.$emit('removeStory', storyId)
    }
   },
 }

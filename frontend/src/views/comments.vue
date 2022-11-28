@@ -151,8 +151,8 @@ export default {
     },
 
     removeStory(storyId){
-      this.$store.dispatch({ type: 'removeStory', id: storyId })
-      this.$router.push(`/story`)
+      // this.$store.dispatch({ type: 'removeStory', id: storyId })
+      // this.$router.push(`/story`)
    },
     toStory(){
        this.$router.go(-1)
